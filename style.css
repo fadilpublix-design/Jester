@@ -1,0 +1,253 @@
+:root {
+  --header-height: 72px;
+  --accent: #ffffff;
+  --transition: all 0.4s ease-in-out;
+}
+
+/* ---------------- BASIC STYLES ---------------- */
+html, body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: url('background.jpeg') center center / cover no-repeat fixed;
+  padding-top: var(--header-height);
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  position: relative;
+}
+
+/* 🔦 Overlay gelap agar teks lebih jelas */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: -1;
+}
+
+/* ---------------- PARALLAX EFFECT ---------------- */
+body::after {
+  content: "";
+  background: url('background.jpeg') center center / cover no-repeat;
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  transform: translateY(0);
+  z-index: -2;
+  transition: transform 0.3s ease-out;
+  will-change: transform;
+}
+
+/* Efek parallax dengan JS */
+.parallax-active body::after {
+  transform: translateY(var(--scroll-y, 0));
+}
+
+/* ---------------- NAVBAR ---------------- */
+.navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  z-index: 999;
+  animation: slideDown 0.8s ease forwards;
+}
+
+.logo {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transition: var(--transition);
+}
+.logo:hover { transform: rotate(10deg) scale(1.1); }
+
+.brand {
+  font-weight: 900;
+  font-size: 22px;
+  color: var(--accent);
+  letter-spacing: 1px;
+  transition: var(--transition);
+}
+.brand:hover { text-shadow: 0 0 10px var(--accent); }
+
+.nav-center a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 800;
+  margin: 0 12px;
+  transition: var(--transition);
+}
+.nav-center a:hover {
+  color: var(--accent);
+  transform: translateY(-3px);
+}
+
+.nav-right {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.nav-logo {
+  width: 38px;
+  height: 38px;
+  border-radius: 8px;
+  transition: var(--transition);
+}
+.nav-logo:hover {
+  transform: scale(1.15) rotate(8deg);
+  box-shadow: 0 0 10px var(--accent);
+}
+
+/* ---------------- MENU MOBILE ---------------- */
+.menu-toggle {
+  display: none;
+  width: 40px;
+  height: 34px;
+  flex-direction: column;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: var(--transition);
+}
+.menu-toggle:hover { background: rgba(255, 255, 255, 0.2); }
+
+.menu-toggle .bar {
+  width: 26px;
+  height: 3px;
+  background: white;
+  border-radius: 3px;
+  transition: var(--transition);
+}
+.menu-toggle.active .bar:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+.menu-toggle.active .bar:nth-child(2) { opacity: 0; }
+.menu-toggle.active .bar:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+.mobile-menu {
+  display: none;
+  position: fixed;
+  top: calc(var(--header-height) + 8px);
+  right: 10px;
+  background: rgba(0,0,0,0.9);
+  padding: 12px;
+  border-radius: 10px;
+  flex-direction: column;
+  gap: 8px;
+  animation: fadeIn 0.4s ease forwards;
+}
+.mobile-menu.show { display: flex; }
+.mobile-menu a { color: #fff; font-weight: 700; text-decoration: none; }
+
+/* ---------------- HERO SECTION ---------------- */
+.hero {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: fadeUp 1.2s ease forwards;
+}
+
+.curved-text {
+  width: 700px;
+  max-width: 95vw;
+  filter: drop-shadow(0 6px 12px rgba(0,0,0,0.5));
+  opacity: 0;
+  animation: fadeIn 1.2s ease forwards 0.5s;
+}
+
+/* 💡 TEKS UTAMA DENGAN EFEK NEON BERWARNA */
+.main-text {
+  font-size: clamp(48px, 10vw, 120px);
+  fill: #ff9d00;
+  stroke: #16a400;
+  stroke-width: 1.5px;
+  filter: drop-shadow(0 0 8px #ffd500) drop-shadow(0 0 20px #ff0048);
+  animation: flickerColor 4s infinite ease-in-out;
+}
+
+/* TEKS SUB */
+.subtext {
+  font-size: clamp(16px, 3.5vw, 34px);
+  fill: white;
+}
+
+/* KARAKTER */
+.karakter {
+  width: 260px;
+  margin-top: 25px;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1.3s ease forwards 1.2s;
+}
+.karakter:hover { transform: scale(1.05) rotate(-3deg); }
+
+/* ---------------- FOOTER ---------------- */
+.footer {
+  background: rgba(0,0,0,0.4);
+  padding: 15px 10px;
+  backdrop-filter: blur(8px);
+  animation: fadeIn 1s ease forwards 1.5s;
+}
+.footer-title {
+  font-weight: 900;
+  color: var(--accent);
+  font-size: 18px;
+  animation: flickerColor 5s infinite;
+}
+.footer-links, .footer-copy { font-size: 14px; }
+
+/* ---------------- ANIMATIONS ---------------- */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.98); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDown {
+  from { transform: translateY(-100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* 🌈 ANIMASI LAMPU NEON BERKEDIP + WARNA BERGANTI */
+@keyframes flickerColor {
+  0%, 19%, 21%, 23%, 25%, 53%, 57%, 100% {
+    opacity: 1;
+    filter: drop-shadow(0 0 8px #ffd500) drop-shadow(0 0 25px #ff0048);
+  }
+  20%, 24%, 55% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 3px #ff0048);
+  }
+  60% {
+    opacity: 1;
+    filter: drop-shadow(0 0 12px #00cb1e) drop-shadow(0 0 35px #00ffea);
+  }
+  80% {
+    opacity: 0.9;
+    filter: drop-shadow(0 0 14px #3212a4) drop-shadow(0 0 35px #00ffa1);
+  }
+  90% {
+    opacity: 1;
+    filter: drop-shadow(0 0 14px #ffd500) drop-shadow(0 0 40px #ff0048);
+  }
+}
+
+/* ---------------- RESPONSIVE ---------------- */
+@media (max-width: 900px) {
+  .nav-center { display: none; }
+  .menu-toggle { display: flex; }
+}

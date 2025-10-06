@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>$Jester — XRP Meme Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="navbar" role="banner">
+    <div class="nav-left">
+      <img src="karakter.png" alt="$Jester" class="logo">
+      <span class="brand">$JESTER</span>
+    </div>
+
+    <nav class="nav-center" aria-label="Main navigation">
+      <a href="#about">{ABOUT}</a>
+      <a href="#memes">{MEMES}</a>
+      <a href="#members">{MEMBERS}</a>
+      <a href="#learn">{LEARN}</a>
+    </nav>
+
+    <div class="nav-right">
+      <a href="#"><img src="first ledger.png" class="nav-logo" alt=""></a>
+      <a href="#"><img src="telegram.png" class="nav-logo" alt=""></a>
+      <a href="#"><img src="xrp.cafe.png" class="nav-logo" alt=""></a>
+      <a href="#"><img src="twitter.jpeg" class="nav-logo" alt=""></a>
+
+      <button id="menu-toggle" class="menu-toggle" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+      </button>
+    </div>
+
+    <div id="mobile-menu" class="mobile-menu" role="menu" aria-hidden="true">
+      <a href="#about">{ABOUT}</a>
+      <a href="#memes">{MEMES}</a>
+      <a href="#members">{MEMBERS}</a>
+      <a href="#learn">{LEARN}</a>
+    </div>
+  </header>
+
+  <main class="hero">
+    <svg id="svg-root" viewBox="0 0 860 300" class="curved-text" xmlns="http://www.w3.org/2000/svg">
+      <path id="curve-top" d="M90 180 Q430 20 770 180" fill="transparent"></path>
+      <text>
+        <textPath xlink:href="#curve-top" startOffset="50%" text-anchor="middle" class="main-text">JESTER</textPath>
+      </text>
+
+      <path id="curve-bottom" d="M200 220 Q400 100 660 220" fill="transparent"></path>
+      <text>
+        <textPath xlink:href="#curve-bottom" startOffset="50%" text-anchor="middle" class="subtext">
+          <tspan class="on" dy="-5" letter-spacing="5">ON</tspan>
+          <tspan class="spacer" dx="15"></tspan>
+          <tspan class="after" dx="80" letter-spacing="5">XRP LEDGER</tspan>
+        </textPath>
+      </text>
+
+      <image id="x-img" href="X.png"
+             width="100" height="100"
+             x="7" y="7"
+             preserveAspectRatio="xMidYMid meet"></image>
+    </svg>
+
+    <img src="karakter.png" alt="Karakter Jester" class="karakter">
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-title">$Jester</div>
+      <nav class="footer-links">TERMS OF USE · PRIVACY POLICY</nav>
+      <div class="footer-copy">© 2025 Jester — All Rights Reserved</div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
